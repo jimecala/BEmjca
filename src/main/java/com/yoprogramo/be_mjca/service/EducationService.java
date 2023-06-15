@@ -13,21 +13,28 @@ public class EducationService implements IEducationService{
     
     @Autowired
     public EducationRepository eduRepo;
-    
 
     @Override
-    public List<Education> showEducation() {
+    public List<Education> getEdu() {
         return eduRepo.findAll();
     }
 
     @Override
-    public void newEducation(Education edu) {
+    public Education searchEdu(Long id) {
+        return eduRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void saveEdu(Education edu) {
         eduRepo.save(edu);
     }
 
     @Override
-    public void deleteEducation(Long id) {
+    public void deleteEdu(Long id) {
         eduRepo.deleteById(id);
     }
+    
+
+    
     
 }

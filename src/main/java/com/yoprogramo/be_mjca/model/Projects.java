@@ -17,15 +17,19 @@ public class Projects implements Serializable {
     private Long id;
     
     private String name;
-    private String type;
+    private String description;
+    private String imgProject;
 
     public Projects() {
     }
 
-    public Projects(String name, String type) {
+    public Projects(String name, String description, String imgProject) {
         this.name = name;
-        this.type = type;
+        this.description = description;
+        this.imgProject = imgProject;
     }
+
+    
     
     
     

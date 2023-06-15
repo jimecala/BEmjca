@@ -7,12 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
-import javax.transaction.Transactional;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Transactional
 @Getter @Setter
 public class Experience implements Serializable {
     
@@ -32,10 +30,14 @@ public class Experience implements Serializable {
     public Experience() {
     }
 
-    public Experience(String position, String employer) {
+    public Experience(String position, String employer, Date startDate, Date endDate) {
         this.position = position;
         this.employer = employer;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
+
+    
 
    
     

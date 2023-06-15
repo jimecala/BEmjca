@@ -15,24 +15,28 @@ public class PersonaService implements IPersonaService {
     public PersonaRepository persoRepo;
     
     @Override
-    public void savePersona(Persona per) {
+    public List<Persona> getPer() {
+        return persoRepo.findAll();
+    }
+    
+    @Override
+    public Persona searchPer(Long id) {
+        return persoRepo.findById(id).orElse(null);
+    }
+    
+    @Override
+    public void savePer(Persona per) {
         persoRepo.save(per);
     }
     
     @Override
-    public void deletePersona(Long id) {
+    public void deletePer(Long id) {
         persoRepo.deleteById(id);
     }
     
-    @Override
-    public List<Persona> getPersona() {
-        return persoRepo.findAll();
-    }
+    
 
-    @Override
-    public Persona searchPersona(Long id) {
-        return persoRepo.findById(id).orElse(null);
-    }
+    
     
 
 }

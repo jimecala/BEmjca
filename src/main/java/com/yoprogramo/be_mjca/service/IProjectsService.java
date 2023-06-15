@@ -6,9 +6,12 @@ import java.util.List;
 
 public interface IProjectsService {
     
-    public List<Projects> showProjects ();
+    public List<Projects> getProj();
     
-    public void addProject (Projects proj);
+    public Projects searchProj(Long id);
     
-    public void deleteProject (Long id);
+    public void saveProj(Projects skl);
+    
+    public void deleteProj(Long id);
+    
 }

@@ -19,21 +19,17 @@ public class Education implements Serializable {
     private Long id;
     
     private String institution;
-    private String degree;
-    
-    @Temporal (javax.persistence.TemporalType.DATE)
-    private Date startDate;
-    
+    private String degree;    
+     
     @Temporal (javax.persistence.TemporalType.DATE)
     private Date endDate;
 
     public Education() {
     }
 
-    public Education(String institution, String degree, Date startDate, Date endDate) {
+    public Education(String institution, String degree, Date endDate) {
         this.institution = institution;
-        this.degree = degree;
-        this.startDate = startDate;
+        this.degree = degree;        
         this.endDate = endDate;
     }
 

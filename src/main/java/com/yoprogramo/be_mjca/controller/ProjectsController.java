@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,20 +22,36 @@ public class ProjectsController {
     @Autowired
     IProjectsService projServ;
     
-    @GetMapping("/show/projects")
+    @GetMapping
     @ResponseBody
-    public List<Projects> showProjects (){
-        return projServ.showProjects();
+    public List<Projects> getProj (){
+        return projServ.getProj();
     }
     
-    @PostMapping("/new/project")
-    public void addProject (Projects proj){
-        projServ.addProject(proj);
+    @PostMapping("/new")
+    public void newProj (Projects proj){
+        projServ.saveProj(proj);
     }
     
-    @DeleteMapping("/delete/project/{id}")
-    public void deleteProject (Long id){
-        projServ.deleteProject(id);
+    @PutMapping ("/edit/{id}")
+    public Projects editProj(@PathVariable Long id,
+                   @RequestParam ("name") String newName,
+                   @RequestParam ("description") String newDescription,
+                   @RequestParam ("imgProject") String newImgProject){
+        Projects proj = projServ.searchProj(id);
+        
+        proj.setName(newName);
+        proj.setDescription(newDescription);
+        proj.setImgProject(newImgProject);
+        
+        projServ.saveProj(proj);
+        
+        return proj;
+    }
+    
+    @DeleteMapping("/delete/{id}")
+    public void deleteProj (@PathVariable Long id){
+        projServ.deleteProj(id);
     }
     
 }

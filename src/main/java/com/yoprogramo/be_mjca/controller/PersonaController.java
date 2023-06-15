@@ -23,15 +23,20 @@ public class PersonaController {
     
     @Autowired
     IPersonaService persoServ;
+    
+    @GetMapping
+    @ResponseBody
+    public List<Persona> getPer () {
+        return persoServ.getPer();
+    }
       
     @PostMapping ("/new")
-    public String newPersona (@RequestBody Persona per) {
-       persoServ.savePersona(per);
-       return "Persona creada.";
+    public void newPer (@RequestBody Persona per) {
+       persoServ.savePer(per);
     }
     
     @PutMapping ("/edit/{id}")
-    public Persona editPersona(@PathVariable Long id,
+    public Persona editPer(@PathVariable Long id,
                        @RequestParam("name") String newName,
                        @RequestParam("lastName") String newLastName,
                        @RequestParam("position") String newPosition,
@@ -41,7 +46,8 @@ public class PersonaController {
                        @RequestParam("urlLinkedin") String newUrlLinkedin,
                        @RequestParam("imgProfile") String newImgProfile,
                        @RequestParam("imgBanner") String newImgBanner){
-        Persona per = persoServ.searchPersona(id);
+        Persona per = persoServ.searchPer(id);
+        
         per.setName(newName);
         per.setLastName(newLastName);
         per.setPosition(newPosition);
@@ -51,21 +57,18 @@ public class PersonaController {
         per.setUrlLinkedin (newUrlLinkedin);
         per.setImgProfile(newImgProfile);
         per.setImgBanner(newImgBanner);
-        persoServ.savePersona(per);
+        
+        persoServ.savePer(per);
+        
         return per;
     }
         
     @DeleteMapping ("/delete/{id}")
-    public String deletePersona(@PathVariable Long id) {
-        persoServ.deletePersona(id);
-        return "Persona eliminada.";
+    public void deletePer(@PathVariable Long id) {
+        persoServ.deletePer(id);
     }
         
-    @GetMapping
-    @ResponseBody
-    public List<Persona> getPersona () {
-        return persoServ.getPersona();
-    }
+    
         
     
 }

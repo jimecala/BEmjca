@@ -5,12 +5,12 @@ import java.util.List;
 
 public interface IPersonaService {
     
-    public void savePersona (Persona per);
+    public List<Persona> getPer();
     
-    public void deletePersona (Long id);
+    public Persona searchPer (Long id);
     
-    public List<Persona> getPersona ();
+    public void savePer (Persona per);
     
-    public Persona searchPersona (Long id);
-        
+    public void deletePer (Long id);
+    
 }

@@ -5,10 +5,12 @@ import java.util.List;
 
 public interface IEducationService {
     
-    public List<Education> showEducation ();
+    public List<Education> getEdu();
     
-    public void newEducation (Education edu);
+    public Education searchEdu(Long id);
     
-    public void deleteEducation (Long id);
+    public void saveEdu (Education edu);
+    
+    public void deleteEdu (Long id);
     
 }

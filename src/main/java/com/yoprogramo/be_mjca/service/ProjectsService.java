@@ -15,17 +15,22 @@ public class ProjectsService implements IProjectsService{
     public ProjectsRepository projRepo;
 
     @Override
-    public List<Projects> showProjects () {
+    public List<Projects> getProj () {
         return projRepo.findAll();
+    }
+    
+    @Override
+    public Projects searchProj(Long id) {
+        return projRepo.findById(id).orElse(null);
     }
 
     @Override
-    public void addProject(Projects proj) {
+    public void saveProj(Projects proj) {
         projRepo.save(proj);
     }
 
     @Override
-    public void deleteProject(Long id) {
+    public void deleteProj(Long id) {
         projRepo.deleteById(id);
     }
     
