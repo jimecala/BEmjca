@@ -15,7 +15,7 @@ public class ProjectsService implements IProjectsService{
     public ProjectsRepository projRepo;
 
     @Override
-    public List<Projects> getProj () {
+    public List<Projects> getProj() {
         return projRepo.findAll();
     }
     

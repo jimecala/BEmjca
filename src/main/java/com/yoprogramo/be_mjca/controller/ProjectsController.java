@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,8 +29,13 @@ public class ProjectsController {
         return projServ.getProj();
     }
     
+    @GetMapping("/{id}")
+    public Projects searchProj(@PathVariable Long id){
+        return projServ.searchProj(id);
+    }    
+    
     @PostMapping("/new")
-    public void newProj (Projects proj){
+    public void newProj (@RequestBody Projects proj){
         projServ.saveProj(proj);
     }
     

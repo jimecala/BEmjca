@@ -32,6 +32,11 @@ public class ExperienceController {
         return expServ.getExp();
     }
     
+    @GetMapping("/{id}")
+    public Experience searchExp(@PathVariable Long id){
+        return expServ.searchExp(id);
+    }
+    
     @PostMapping ("/new")
     public void newExp (@RequestBody Experience exp) {
        expServ.saveExp(exp);       

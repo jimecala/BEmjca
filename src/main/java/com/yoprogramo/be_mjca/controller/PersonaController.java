@@ -29,6 +29,11 @@ public class PersonaController {
     public List<Persona> getPer () {
         return persoServ.getPer();
     }
+    
+    @GetMapping("/{id}")
+    public Persona searchPer(@PathVariable Long id){
+        return persoServ.searchPer(id);
+    }
       
     @PostMapping ("/new")
     public void newPer (@RequestBody Persona per) {

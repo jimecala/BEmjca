@@ -27,11 +27,11 @@ public class Education implements Serializable {
     public Education() {
     }
 
-    public Education(String institution, String degree, Date endDate) {
+    public Education(Long id, String institution, String degree, Date endDate) {
+        this.id = id;
         this.institution = institution;
-        this.degree = degree;        
+        this.degree = degree;
         this.endDate = endDate;
     }
-
     
 }

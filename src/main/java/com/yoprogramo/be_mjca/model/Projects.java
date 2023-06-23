@@ -23,15 +23,12 @@ public class Projects implements Serializable {
     public Projects() {
     }
 
-    public Projects(String name, String description, String imgProject) {
+    public Projects(Long id, String name, String description, String imgProject) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.imgProject = imgProject;
     }
-
-    
-    
-    
     
     
 }

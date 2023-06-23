@@ -30,6 +30,11 @@ public class EducationController {
     public List<Education> getEdu () {
         return eduServ.getEdu();
     }  
+    
+    @GetMapping("/{id}")
+    public Education searchEdu(@PathVariable Long id){
+        return eduServ.searchEdu(id);
+    }
         
     @PostMapping ("/new")
     public void newEdu (@RequestBody Education edu) {
